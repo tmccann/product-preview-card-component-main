@@ -1,0 +1,178 @@
+:root {
+  /* color variable setyp */
+  --clr-primary-dark-cyan: hsl(158, 36%, 37%);
+  --clr-primary-dark-cyan-hover:hsl(158, 36%, 20%);
+  --clr-primary-cream: hsl(30, 38%, 92%);
+
+  --clr-neutral-very-dark-blue: hsl(212, 21%, 14%);
+  --clr-neutraldark-grayish-blue: hsl(228, 12%, 48%);
+  --clr-neutral-white: hsl(0, 0%, 100%);
+
+  /* font variable set up */
+  --ff-accent: "Fraunces", serif;
+  --ff-normal: "Montserrat", sans-serif;
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  height: 100%;
+}
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.7;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* add context for items that wont be picked up by screen reader */
+.visually-hidden:not(:focus):not(:active){
+    clip: (0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* body default settings */
+body {
+  font-family: var(--ff-normal);
+  font-weight: var(--fw-regular);
+  font-size: 0.875rem;
+  color: var(--clr-neutraldark-grayish-blue);
+  background-color: var(--clr-primary-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+}
+
+
+/* button default setup */
+button{
+    cursor: pointer;
+    /* teake off decoration if using links */
+    text-decoration: none;
+    /* display inline flex allow for adding image within button easily */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: 0;
+    border-radius: 0.3rem;
+    padding: 0.5em 1.5em;
+    background-color: var(--clr-primary-dark-cyan);
+    color: var(--clr-neutral-white);
+    font-weight: var(--fw-bold);
+
+}
+button:is(:hover, :focus){
+background-color: var(--clr-primary-dark-cyan-hover);
+}
+
+ .product__button[data-icon='shopping-cart']::before {
+    /* if content left blank nothing will be rendered "" needed */
+    content:"";
+    background-image: url(/images/icon-cart.svg);
+    width: 15px;
+    height: 16px;
+    
+}
+/* product styles */
+
+.product {
+  display: grid;
+  background-color: var(--clr-neutral-white);
+  border-radius: 0.5rem;
+  /* overflow hidden stops image from overlaying over border raduis */
+  overflow: hidden;
+  max-width: 600px;
+}
+
+@media(min-width:600px){
+  .product{
+    grid-template-columns: 1fr 1fr;
+
+  }
+}
+.product__info {
+  /* display grid simply used to stretch button with little effort */
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.product__info > span {
+  /* add spacing to lettering */
+  letter-spacing: 0.375em;
+  /* Chane to capital lettering */
+  text-transform: uppercase;
+}
+
+.product__name {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--clr-neutral-very-dark-blue);
+  line-height: 1;
+}
+
+.product__price {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.product__price-new {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--clr-primary-dark-cyan);
+}
+
+.product__price-Original {
+  margin: auto;
+}
